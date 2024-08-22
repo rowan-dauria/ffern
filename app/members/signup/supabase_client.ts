@@ -22,6 +22,11 @@ export async function authClient() {
     password: '12345678',
   })
 
+  if (error) {
+    console.error(error)
+    throw new Error('Error signing in DB client')
+  }
+
   return supabase
 }
 
