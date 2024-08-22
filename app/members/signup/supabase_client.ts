@@ -6,8 +6,6 @@ dotenv.config()
 
 const saltRounds = 10
 
-//different clients for different levels of access
-
 export async function authClient() {
   // Create a single supabase client for interacting with your database
   if (!process.env.PUBLIC_SUPABASE_URL || !process.env.PUBLIC_SUPABASE_ANON_KEY) {
@@ -41,7 +39,7 @@ export function signUpClient() {
 
 export async function insertMember(member: Member, password: string) {
 
-  const salt = await bcrypt.genSalt(10)
+  const salt = await bcrypt.genSalt(saltRounds)
   const hash = await bcrypt.hash(password, salt)
 
   const client = await authClient()
@@ -88,6 +86,7 @@ export async function inLedger(id: Number) : Promise<boolean> {
       // TODO stop instantiating a new client for each request
       const client = await authClient();
 
+      client.auth.refreshSession()
       const { data, error } = await client.from('ledger').select('*').eq('member_id', id)
   
       if (error) {
