@@ -30,6 +30,14 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - All of the state and callbacks are defined on the SignUp component to centralise state and logic
 - If I were to do it again, i would redirect the user to a new page after a successful login. This would save data being sent to the user needlessly.
 
+### Auth
+- I started making the auth layer (storing hashed passwords with bcrypt) but didn't get around to finishing it. To finish it I would add:
+    - Store an encrypted token on a session cookie. This will then exist on all subsequent client requests.
+    - Decrypt the token from the session cookie. If successfully decrypted, expose make certain routes available. For example, the decrypted data might contain information about the user type (member or team), if it's a team user: allow routing to trigger creation.
+    - Can add functionality for session persistence, like renewing the session cookie each time it is verified.
+
+### Analytics
+
 ### DB
 - I implemented some foreign key constraints like member region must match a value in the regions table, and that a member_id on the ledger must correspond to an id on the members table. I also included some cascades to remove users from the ledger if they opt out.
 - In future, I would add some DB triggers for the adding users to the invited_to_join table. 
