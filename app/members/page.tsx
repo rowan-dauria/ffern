@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import Form from  "./Form";
 import { Member, Region, LedgerStatus, memberID } from "../models/member";
@@ -36,10 +36,10 @@ async function fetchLedgerStatus(id: memberID): Promise<LedgerStatus> {
 }
 
 
-async function submit(newMember: Member) {
+async function submit(newMember: Member, password: string): Promise<Response> {
     const res = await fetch('/members/signup', {
         method: 'POST',
-        body: JSON.stringify(newMember)
+        body: JSON.stringify({ newMember, password })
     })
     if (!res.ok) {
         throw new Error('Error creating member')
@@ -57,9 +57,15 @@ export default function SignUp() {
     const [memberRegion, setMemberRegion] = useState<null | string>(null);
     const [memberName, setMemberName] = useState<null | string>(null);
     const [memberNumber, setMemberNumber] = useState<null | string>(null);
+    const [memberPassword, setMemberPassword] = useState<null | string>(null);
 
-    async function validateAndSubmit(name: string | null, number: string | null, region: string | null) : Promise<void> {
-        if (name === null || number === null || region === null) {
+    async function validateAndSubmit(
+        name: string | null,
+        number: string | null,
+        region: string | null,
+        password: string | null)
+        : Promise<void> {
+        if (name === null || number === null || region === null || password === null) {
             alert('Please fill out all fields')
             return
         }
@@ -70,7 +76,7 @@ export default function SignUp() {
             number,
             region: newRegion,
         };
-        const response = await submit(newMember) as Response
+        const response = await submit(newMember, password) as Response
 
         if (response.ok) {
             response.json().then((data) => {
@@ -127,9 +133,11 @@ export default function SignUp() {
                     setMemberNameCallback={setMemberName}
                     setMemberNumberCallback={setMemberNumber}
                     setMemberRegionCallback={setMemberRegion}
+                    setMemberPasswordCallback={setMemberPassword}
                     memberName={memberName}
                     memberNumber={memberNumber}
                     memberRegion={memberRegion}
+                    memberPassword={memberPassword}
                 />
             }
                 
