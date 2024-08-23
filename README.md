@@ -37,6 +37,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
     - Can add functionality for session persistence, like renewing the session cookie each time it is verified.
 
 ### Analytics
+- Partially implemented them through the Vercel platform.
 
 ### DB
 - I implemented some foreign key constraints like member region must match a value in the regions table, and that a member_id on the ledger must correspond to an id on the members table. I also included some cascades to remove users from the ledger if they opt out.
@@ -46,4 +47,14 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - I would refactor the DAL to make it easier for testing, for example making it easier to inject a mock client that can return dummy data.
 - React server components are apparently not fully supported by testing frameworks, so better to stick to end-to-end testing. This seems like a drawback. [SOURCE](https://nextjs.org/docs/app/building-your-application/testing#async-server-components)
 - I didn't use TDD to make this because I have never used the Next framework before, so wanted to focus on getting something working.
+
+### Requirements Coverage
+Covered:
+    - I have met the component requirements (database, API endpoints and sign up page)
+    - 3/4 of technical requirements. I haven't authenticated all of the endpoints but have a clear plan for how I would do that.
+    - Opting out of the waiting list
+Not Covered:
+    - Testing - why not?
+    - Don't store analytics data. However Vercel has a nice dashboard for traffic analytics that I have used.
+    - The trigger/invite process was never implemented.
 
