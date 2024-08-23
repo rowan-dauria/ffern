@@ -44,5 +44,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ### Testing
 - I would refactor the DAL to make it easier for testing, for example making it easier to inject a mock client that can return dummy data.
+- React server components are apparently not fully supported by testing frameworks, so better to stick to end-to-end testing. This seems like a drawback. [SOURCE](https://nextjs.org/docs/app/building-your-application/testing#async-server-components)
 - I didn't use TDD to make this because I have never used the Next framework before, so wanted to focus on getting something working.
 
