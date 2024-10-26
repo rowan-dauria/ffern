@@ -1,4 +1,16 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Ffern Technical Test
+
+Ffern is a subscription-based perfume business that implements a waitlist system to manage demand for new memberships.
+
+This repo is a web application with functionality to sign up to a waiting list using a name and phone number. It is a membership waiting list. Staff users can release new invites that will be sent to people on the list, enabling them to become members. 
+I implemented the waiting list, but did not have time to create the invite functionality. However, I have a clear plan for how I would implement it.
+
+It uses React for the frontend, Next.js for the backend and connects to a PostgreSQL database hosted on Supabase. 
+
+This project is bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+## Architecture
+[architecture diagram](arch-diagram.png)
 
 ## Getting Started
 
@@ -50,11 +62,12 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ### Requirements Coverage
 Covered:
-    - I have met the component requirements (database, API endpoints and sign up page)
-    - 3/4 of technical requirements. I haven't authenticated all of the endpoints but have a clear plan for how I would do that.
-    - Opting out of the waiting list
+- I have met the component requirements (database, API endpoints and sign up page)
+- 3/4 of technical requirements. I haven't authenticated all of the endpoints but have a clear plan for how I would do that.
+- Opting out of the waiting list
+
 Not Covered:
-    - Testing - why not?
-    - Don't store analytics data. However Vercel has a nice dashboard for traffic analytics that I have used.
-    - The trigger/invite process was never implemented.
+- Testing - why not?
+- Don't store analytics data. However Vercel has a nice dashboard for traffic analytics that I have used.
+- The trigger/invite process was never implemented.
 
